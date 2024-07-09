@@ -1,0 +1,24 @@
+<div class="purchase-list-container">
+    <div class="purchase-list">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Total Cost</th>
+        </tr>
+        <tr *ngFor="let purchase of purchases" (click)="onSelect(purchase)">
+          <td>{{ purchase.name }}</td>
+          <td>{{ purchase.purchasedAt | date }}</td>
+          <td>{{ purchase.totalCost | currency }}</td>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="selectedPurchase" class="purchase-detail">
+      <h2>{{ selectedPurchase.name }}</h2>
+      <p>{{ selectedPurchase.description }}</p>
+      <p>Quantity: {{ selectedPurchase.quantity }}</p>
+      <p>Unit Price: {{ selectedPurchase.unitPrice | currency }}</p>
+      <p>Total Cost: {{ selectedPurchase.totalCost | currency }}</p>
+    </div>
+  </div>
+  
